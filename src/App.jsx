@@ -16,7 +16,7 @@ function App() {
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/collections" element={<Collections />} />
                 <Route
-                    path="/singleProductPage"
+                    path="/singleProductPage/:id"
                     element={<SingleProductPage />}
                 />
             </Routes>

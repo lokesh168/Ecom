@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Collections = () => {
     const [receipe, setReceipe] = useState();
@@ -67,22 +68,24 @@ const Collections = () => {
                         </button>
                         <div className="container flex flex-wrap mx-auto">
                             {filteredList?.map((item, index) => (
-                                <div
-                                    className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition"
+                                <Link
+                                    to={`/singleProductPage/${item.id}`}
                                     key={index}
                                 >
-                                    <img
-                                        className="rounded"
-                                        src={item.image}
-                                        alt="something about tea"
-                                    />
-                                    <p className="uppercase mt-5 font-bold text-md">
-                                        {item.name}
-                                    </p>
-                                    <p className="uppercase font-bold text-sm py-2">
-                                        $ {Math.floor(Math.random() * 200)}
-                                    </p>
-                                </div>
+                                    <div className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
+                                        <img
+                                            className="rounded"
+                                            src={item.image}
+                                            alt="something about tea"
+                                        />
+                                        <p className="uppercase mt-5 font-bold text-md">
+                                            {item.name}
+                                        </p>
+                                        <p className="uppercase font-bold text-sm py-2">
+                                            $ {Math.floor(Math.random() * 200)}
+                                        </p>
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

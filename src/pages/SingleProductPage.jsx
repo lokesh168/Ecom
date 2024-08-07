@@ -1,14 +1,29 @@
-import { useState } from "react";
-import { Coffee } from "lucide-react";
-import homeBanner from "../assets/Home-Banner.webp";
+import { useEffect, useState } from "react";
+import { Coffee, CookingPot, Microwave, Cookie } from "lucide-react";
 import Footer from "../components/Footer";
+import { useParams } from "react-router-dom";
 
 const SingleProductPage = () => {
+    const [singleProductData, setSingleProductData] = useState([]);
     let [count, setCount] = useState(1);
+    let { id } = useParams();
 
+    console.log(id);
     if (count < 1) {
         count = 1;
     }
+
+    async function fetchRestApi() {
+        const uri = await fetch(`https://dummyjson.com/recipes/${id}`);
+
+        const response = await uri.json();
+
+        setSingleProductData(response);
+    }
+
+    useEffect(() => {
+        fetchRestApi();
+    }, []);
 
     return (
         <div>
@@ -17,21 +32,19 @@ const SingleProductPage = () => {
                 <div className="flex mx-auto justify-center space-x-16">
                     <div>
                         <img
-                            className="w-96"
-                            src={homeBanner}
+                            className="w-96 rounded-md"
+                            src={singleProductData.image}
                             alt="home-banner"
                         />
                     </div>
                     <div className="min-w-24 p-10 ml-10">
                         <h1 className="my-5 text-3xl font-bold">
-                            Receipe Name <br /> just like our tea
+                            {singleProductData.name}
                         </h1>
-                        <h2 className="my-5 w-96">
-                            Lorem ipsum dolor sit amet consectetur. Orci nibh
-                            nullam risus adipiscing odio. Neque lacus nibh eros
-                            in.
-                        </h2>
-                        <p className="text-4xl">$ 500</p>
+                        <h2 className="my-5 w-96">{singleProductData.name}</h2>
+                        <p className="text-4xl">
+                            $ {singleProductData.caloriesPerServing}
+                        </p>
 
                         <div className="flex justify-between items-center my-4">
                             <div className="">
@@ -63,66 +76,73 @@ const SingleProductPage = () => {
                     <div className="space-y-5">
                         <div className="flex">
                             <Coffee className="mx-2" />
-                            <span>
-                                <b>SERVING SIZE:</b> OF LOOSEF TEA
+                            <span className="uppercase">
+                                <b>SERVING SIZE:</b>{" "}
+                                <em className="mx-2 border-2 border-black p-2 px-4 rounded-md">
+                                    {singleProductData.servings}
+                                </em>
                             </span>
                         </div>
                         <div className="flex">
-                            <Coffee className="mx-2" />
-                            <span>
-                                <b>WATER TEMPERATURE:</b>OF LOOSEF TEA
+                            <CookingPot className="mx-2" />
+                            <span className="uppercase">
+                                <b>cookTimeMinutes:</b>
+                                <em className="mx-2 border-2 border-black p-2 px-4 rounded-md">
+                                    {singleProductData.cookTimeMinutes}
+                                </em>
                             </span>
                         </div>
                         <div className="flex">
-                            <Coffee className="mx-2" />
-                            <span>
-                                <b>STEEPING TIME:</b>KIND OF LOOSEF TEA
+                            <Microwave className="mx-2" />
+                            <span className="uppercase">
+                                <b>prepTimeMinutes:</b>
+                                <em className="mx-2 border-2 border-black p-2 px-4 rounded-md">
+                                    {singleProductData.prepTimeMinutes}
+                                </em>
                             </span>
                         </div>
                         <div className="flex">
-                            <Coffee className="mx-2" />
-                            <span>
-                                <b>COLOR AFTER 3 MINUTES:</b>KIND OF LOOSEF TEA
+                            <Cookie className="mx-2" />
+                            <span className="uppercase">
+                                <b>caloriesPerServing:</b>
+                                <em className="mx-2 border-2 border-black p-2 px-4 rounded-md">
+                                    {singleProductData.caloriesPerServing}
+                                </em>
                             </span>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-4xl my-4">About this tea</h2>
+                    <h2 className="text-4xl my-4 text-right">
+                        About this Dish
+                    </h2>
                     <div className="space-y-5">
-                        <div className="flex justify-start space-x-5">
-                            <div className="p-6 border-r-4 border-[#d3d3d3]">
-                                <p>FLAVOR</p>
-                                <p>Spicy</p>
-                            </div>
-                            <div className="p-6 border-r-4 border-[#d3d3d3]">
-                                <p>FLAVOR</p>
-                                <p>Spicy</p>
-                            </div>
-                            <div className="p-6 border-r-4 border-[#d3d3d3]">
-                                <p>FLAVOR</p>
-                                <p>Spicy</p>
-                            </div>
-                            <div className="p-6">
-                                <p>FLAVOR</p>
-                                <p>Spicy</p>
-                            </div>
+                        <div className="flex justify-end space-x-5">
+                            {singleProductData?.tags?.map((item, index) => (
+                                <div
+                                    className="p-6 border-r-4 border-[#d3d3d3]"
+                                    key={index}
+                                >
+                                    <p>{item}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
                     <h2 className="text-4xl my-4">Ingredient</h2>
-                    <div className="space-y-5">
-                        <span>
-                            Black Ceylon tea, Green tea, Ginger root, Cloves,
-                            Black pepper, <br /> Cinnamon sticks, Cardamom,
-                            Cinnamon pieces.
-                        </span>
-                    </div>
+                    {/* <div>
+                        {singleProductData?.ingredients?.map((item, index) => (
+                            <span className="" key={index}>
+                                {item}
+                            </span>
+                        ))}
+                    </div> */}
+                    <span>About Ingredients</span>
                 </div>
             </div>
 
             {/* Similar products you might like */}
-            <div>
+            <div className="my-28">
                 <h2 className="text-center text-4xl">You may also like</h2>
 
                 <div className="container flex justify-evenly my-10 mx-auto">
