@@ -34,8 +34,6 @@ const Collections = () => {
         fetchRestApi();
     }, []);
 
-    console.log(filteredList);
-
     return (
         <section>
             {/* Banner */}
@@ -68,7 +66,7 @@ const Collections = () => {
                             <p className="text-right">Sort</p>
                         </button>
                         <div className="container flex flex-wrap mx-auto">
-                            {filteredList.map((item, index) => (
+                            {filteredList?.map((item, index) => (
                                 <div
                                     className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition"
                                     key={index}
