@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import Modal from "../components/Modal";
 
 const Accounts = () => {
     return (
@@ -23,7 +24,7 @@ const Accounts = () => {
                 </button>
             </div>
 
-            <dir>
+            <div>
                 <div className="py-10 px-7  w-96 bg-[#F4F4F4]">
                     <h1 className="mb-3 text-2xl">New to our company?</h1>
                     <p className="mb-3 font-medium">
@@ -56,7 +57,8 @@ const Accounts = () => {
                         Checkout
                     </button>
                 </div>
-            </dir>
+            </div>
+            <Modal />
         </section>
     );
 };

@@ -1,5 +1,5 @@
 import { Coffee } from "lucide-react";
-import homeBanner from "../assets/Home-Banner.webp";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Home = () => {
@@ -11,14 +11,14 @@ const Home = () => {
                 <div className="flex mx-auto justify-center space-x-16">
                     <div>
                         <img
-                            className="w-96"
-                            src={homeBanner}
+                            className="w-96 rounded-md"
+                            src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                             alt="home-banner"
                         />
                     </div>
                     <div className="min-w-24 p-10 ml-10">
-                        <h1 className="my-5 text-3xl font-bold">
-                            Every day is unique, <br /> just like our tea
+                        <h1 id="signature" className="my-5 text-3xl font-bold">
+                            Every day is unique, <br /> just like our food.
                         </h1>
                         <h2 className="my-5 w-96">
                             Lorem ipsum dolor sit amet consectetur. Orci nibh
@@ -30,9 +30,11 @@ const Home = () => {
                             nullam risus adipiscing odio. Neque lacus nibh eros
                             in.
                         </h2>
-                        <button className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all">
-                            Browse Teas
-                        </button>
+                        <Link to="/collections">
+                            <button className="uppercase bg-slate-900 py-5 mt-4 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all">
+                                Browse Food
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -68,7 +70,7 @@ const Home = () => {
                     <div className="mx-5 text-center">
                         <img
                             className="rounded"
-                            src="https://images.unsplash.com/photo-1523920290228-4f321a939b4c?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWNvbW1lcmNlJTIwZm9vZCUyMHdlYnNpdGUlMjBiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
                             alt="something about tea"
                         />
                         <p className="uppercase mt-5 font-bold text-md">
@@ -78,7 +80,7 @@ const Home = () => {
                     <div className="mx-5 text-center">
                         <img
                             className="rounded"
-                            src="https://images.unsplash.com/photo-1523920290228-4f321a939b4c?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWNvbW1lcmNlJTIwZm9vZCUyMHdlYnNpdGUlMjBiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
                             alt="something about tea"
                         />
                         <p className="uppercase mt-5 font-bold text-md">
@@ -88,7 +90,7 @@ const Home = () => {
                     <div className="mx-5 text-center">
                         <img
                             className="rounded"
-                            src="https://images.unsplash.com/photo-1523920290228-4f321a939b4c?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZWNvbW1lcmNlJTIwZm9vZCUyMHdlYnNpdGUlMjBiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
                             alt="something about tea"
                         />
                         <p className="uppercase mt-5 font-bold text-md">
@@ -101,7 +103,7 @@ const Home = () => {
                     <div className="mx-5 text-center">
                         <img
                             className="rounded"
-                            src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=1478&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://plus.unsplash.com/premium_photo-1705056547423-de4ef0f85bf7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZWNvbW1lcmNlJTIwZm9vZCUyMHdlYnNpdGUlMjBiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
                             alt="something about tea"
                         />
                         <p className="uppercase mt-5 font-bold text-md">
@@ -111,7 +113,7 @@ const Home = () => {
                     <div className="mx-5 text-center">
                         <img
                             className="rounded"
-                            src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=1478&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://plus.unsplash.com/premium_photo-1705056547423-de4ef0f85bf7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZWNvbW1lcmNlJTIwZm9vZCUyMHdlYnNpdGUlMjBiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
                             alt="something about tea"
                         />
                         <p className="uppercase mt-5 font-bold text-md">
@@ -121,7 +123,7 @@ const Home = () => {
                     <div className="mx-5 text-center">
                         <img
                             className="rounded"
-                            src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?q=80&w=1478&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://plus.unsplash.com/premium_photo-1705056547423-de4ef0f85bf7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZWNvbW1lcmNlJTIwZm9vZCUyMHdlYnNpdGUlMjBiYW5uZXJ8ZW58MHx8MHx8fDA%3D"
                             alt="something about tea"
                         />
                         <p className="uppercase mt-5 font-bold text-md">
@@ -180,7 +182,11 @@ const Home = () => {
             {/* Reverse homepage */}
             <div className="flex mx-auto flex-row-reverse justify-center space-x-16">
                 <div>
-                    <img className="w-96" src={homeBanner} alt="home-banner" />
+                    <img
+                        className="w-96"
+                        src="https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="home-banner"
+                    />
                 </div>
                 <div className="min-w-24 p-10 ml-10">
                     <h1 className="my-5 text-3xl font-bold">

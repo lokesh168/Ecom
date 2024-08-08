@@ -9,7 +9,6 @@ const Collections = () => {
     const [showData, setShowData] = useState(false);
     const [sortByName, setSortByName] = useState("");
 
-    console.log(sortByName);
     function removeDuplicates(arr) {
         let unique = arr.reduce(function (acc, curr) {
             if (!acc.includes(curr.cuisine)) acc.push(curr.cuisine);
@@ -39,9 +38,13 @@ const Collections = () => {
         setReceipe(response);
     }
 
+    function sortFunctionHandlerByName() {
+        setSortByName("name");
+    }
+
     useEffect(() => {
         fetchRestApi();
-    }, []);
+    }, [sortByName]);
 
     return (
         <section>
@@ -49,7 +52,7 @@ const Collections = () => {
             <div>
                 <img
                     className="h-60 w-full object-cover"
-                    src="https://plus.unsplash.com/premium_photo-1673484470265-39526c43ca3e?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://plus.unsplash.com/premium_photo-1705056547423-de4ef0f85bf7?q=80&w=1463&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="banner"
                 />
             </div>
@@ -70,14 +73,14 @@ const Collections = () => {
                             </button>
                         ))}
                     </div>
-                    <div className="col-span-4 row-span-5 col-start-2 relative">
-                        <button
-                            onClick={() => setSortByName("name")}
-                            className="my-1 p-4 border-b-2 border-black hover:bg-[#AF8260] absolute top-[-8%] right-0"
-                        >
-                            <p className="text-right">Sort</p>
-                        </button>
-                        <div className="container flex flex-wrap mx-auto">
+                    <div className="col-span-4 row-span-5 col-start-2 ">
+                        <div className="container flex flex-wrap mx-auto relative">
+                            <button
+                                onClick={sortFunctionHandlerByName}
+                                className="p-4 border-b-2 border-black hover:bg-[#AF8260] absolute top-[0%] right-0"
+                            >
+                                <p className="text-right">Sort</p>
+                            </button>
                             {showData ? (
                                 <>
                                     {filteredList?.map((item, index) => (
