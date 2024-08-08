@@ -6,7 +6,10 @@ const Collections = () => {
     const [receipe, setReceipe] = useState();
     const [dishNames, setDishName] = useState();
     const [filteredList, setFilteredList] = useState();
+    const [showData, setShowData] = useState(false);
+    const [sortByName, setSortByName] = useState("");
 
+    console.log(sortByName);
     function removeDuplicates(arr) {
         let unique = arr.reduce(function (acc, curr) {
             if (!acc.includes(curr.cuisine)) acc.push(curr.cuisine);
@@ -17,14 +20,19 @@ const Collections = () => {
 
     function receipeNameHandler(receipeName) {
         const output = receipe?.recipes.filter((item) => {
-            if (item.cuisine == receipeName) return item;
+            if (item.cuisine == receipeName) {
+                setShowData(true);
+                return item;
+            }
         });
 
         setFilteredList(output);
     }
 
     async function fetchRestApi() {
-        const uri = await fetch("https://dummyjson.com/recipes");
+        const uri = await fetch(
+            `https://dummyjson.com/recipes?sortBy=${sortByName}`
+        );
 
         const response = await uri.json();
         setDishName(removeDuplicates(response?.recipes));
@@ -63,30 +71,66 @@ const Collections = () => {
                         ))}
                     </div>
                     <div className="col-span-4 row-span-5 col-start-2 relative">
-                        <button className="my-1 p-4 border-b-2 border-black hover:bg-[#AF8260] absolute top-[-8%] right-0">
+                        <button
+                            onClick={() => setSortByName("name")}
+                            className="my-1 p-4 border-b-2 border-black hover:bg-[#AF8260] absolute top-[-8%] right-0"
+                        >
                             <p className="text-right">Sort</p>
                         </button>
                         <div className="container flex flex-wrap mx-auto">
-                            {filteredList?.map((item, index) => (
-                                <Link
-                                    to={`/singleProductPage/${item.id}`}
-                                    key={index}
-                                >
-                                    <div className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
-                                        <img
-                                            className="rounded"
-                                            src={item.image}
-                                            alt="something about tea"
-                                        />
-                                        <p className="uppercase mt-5 font-bold text-md">
-                                            {item.name}
-                                        </p>
-                                        <p className="uppercase font-bold text-sm py-2">
-                                            $ {Math.floor(Math.random() * 200)}
-                                        </p>
-                                    </div>
-                                </Link>
-                            ))}
+                            {showData ? (
+                                <>
+                                    {filteredList?.map((item, index) => (
+                                        <Link
+                                            to={`/singleProductPage/${item.id}`}
+                                            key={index}
+                                        >
+                                            <div className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
+                                                <img
+                                                    className="rounded"
+                                                    src={item.image}
+                                                    alt="something about tea"
+                                                />
+                                                <p className="uppercase mt-5 font-bold text-md">
+                                                    {item.name}
+                                                </p>
+                                                <p className="uppercase font-bold text-sm py-2">
+                                                    ${" "}
+                                                    {Math.floor(
+                                                        Math.random() * 200
+                                                    )}
+                                                </p>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </>
+                            ) : (
+                                <>
+                                    {receipe?.recipes?.map((item, index) => (
+                                        <Link
+                                            to={`/singleProductPage/${item.id}`}
+                                            key={index}
+                                        >
+                                            <div className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
+                                                <img
+                                                    className="rounded"
+                                                    src={item.image}
+                                                    alt="something about tea"
+                                                />
+                                                <p className="uppercase mt-5 font-bold text-md">
+                                                    {item.name}
+                                                </p>
+                                                <p className="uppercase font-bold text-sm py-2">
+                                                    ${" "}
+                                                    {Math.floor(
+                                                        Math.random() * 200
+                                                    )}
+                                                </p>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
