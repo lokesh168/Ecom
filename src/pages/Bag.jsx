@@ -7,6 +7,7 @@ const Bag = () => {
         <div>
             <div className="px-4 flex justify-evenly mt-5">
                 <p className="uppercase">1.&nbsp; My Bag</p>
+
                 <p className="uppercase">2.&nbsp; Delivery</p>
                 <p className="uppercase">3.&nbsp; Review & Payment</p>
             </div>

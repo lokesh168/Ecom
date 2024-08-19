@@ -19,8 +19,6 @@ const Navbar = () => {
                     <Link to="/collections" className="uppercase">
                         Food Collection
                     </Link>
-                    <Link className="uppercase">Accessories</Link>
-
                     <Link to="/account" className="uppercase">
                         Contact Us
                     </Link>

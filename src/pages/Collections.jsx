@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 
 const Collections = () => {
     const [receipe, setReceipe] = useState();
     const [dishNames, setDishName] = useState();
     const [filteredList, setFilteredList] = useState();
-    const [showData, setShowData] = useState(false);
     const [sortByName, setSortByName] = useState("");
+    const [showData, setShowData] = useState(false);
+    const [toggle, setToggle] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     function removeDuplicates(arr) {
         let unique = arr.reduce(function (acc, curr) {
@@ -29,17 +31,20 @@ const Collections = () => {
     }
 
     async function fetchRestApi() {
+        setLoading(true);
         const uri = await fetch(
-            `https://dummyjson.com/recipes?sortBy=${sortByName}`
+            `https://dummyjson.com/recipes?delay=2000&sortBy=${sortByName}`
         );
 
         const response = await uri.json();
         setDishName(removeDuplicates(response?.recipes));
         setReceipe(response);
+        setLoading(false);
     }
 
     function sortFunctionHandlerByName() {
-        setSortByName("name");
+        setSortByName(toggle ? "name" : "");
+        setToggle(!toggle);
     }
 
     useEffect(() => {
@@ -74,13 +79,28 @@ const Collections = () => {
                         ))}
                     </div>
                     <div className="col-span-4 row-span-5 col-start-2 ">
+                        <div>
+                            {loading ? (
+                                <HashLoader
+                                    className="mx-auto my-10"
+                                    color="#AF8260"
+                                    size={60}
+                                />
+                            ) : (
+                                ""
+                            )}
+                        </div>
                         <div className="container flex flex-wrap mx-auto relative">
                             <button
                                 onClick={sortFunctionHandlerByName}
-                                className="p-4 border-b-2 border-black hover:bg-[#AF8260] absolute top-[0%] right-0"
+                                className="p-4  bg-amber-500 hover:bg-amber-600  active:bg-amber-700 focus:outline-none focus:ring focus:ring-amber-900 rounded-md absolute top-[0%] right-0"
                             >
-                                <p className="text-right">Sort</p>
+                                <p className="text-right">
+                                    {toggle ? "Sort" : "Sorted"}
+                                </p>
                             </button>
+                            {/* <HashLoader color="#AF8260" size={60} /> */}
+
                             {showData ? (
                                 <>
                                     {filteredList?.map((item, index) => (
@@ -138,9 +158,6 @@ const Collections = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Footer */}
-            <Footer />
         </section>
     );
 };

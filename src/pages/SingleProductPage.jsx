@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { Coffee, CookingPot, Microwave, Cookie } from "lucide-react";
-import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
-import SimilarProduct from "../components/SimilarProduct";
+// import Modal from "../components/Modal";
+
+export const SimilarProduct = lazy(() =>
+    import("../components/SimilarProduct")
+);
 
 const SingleProductPage = () => {
     const [singleProductData, setSingleProductData] = useState([]);
     let [count, setCount] = useState(1);
     let { id } = useParams();
 
-    console.log(id);
     if (count < 1) {
         count = 1;
     }
@@ -28,7 +30,7 @@ const SingleProductPage = () => {
 
     return (
         <div>
-            <section className="px-10 py-5 mt-5">
+            <section className="px-10 py-5 mt-5 relative">
                 {/* Home Cover */}
                 <div className="flex mx-auto justify-center space-x-16">
                     <div>
@@ -44,7 +46,7 @@ const SingleProductPage = () => {
                         </h1>
                         <h2 className="my-5 w-96">{singleProductData.name}</h2>
                         <p className="text-4xl">
-                            $ {singleProductData.caloriesPerServing}
+                            ₹ {singleProductData.caloriesPerServing}
                         </p>
 
                         <div className="flex justify-between items-center my-4">
@@ -69,6 +71,11 @@ const SingleProductPage = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Modal */}
+                {/* <div className="absolute backdrop-filter backdrop-blur-lg inset-10 w-96 mx-auto bg-[#dbd6d6]  backdrop-brightness-50">
+                    <Modal />
+                </div> */}
             </section>
 
             <div className="flex justify-evenly my-5 py-10  bg-[#F4F4F4] px-10">
@@ -138,13 +145,18 @@ const SingleProductPage = () => {
                             </span>
                         ))}
                     </div> */}
+
+                    <div>
+                        <p>Ingredients</p>
+                        <div></div>
+                    </div>
+
                     <span>About Ingredients</span>
                 </div>
             </div>
 
             {/* Similar products you might like */}
             <SimilarProduct />
-            <Footer />
         </div>
     );
 };
