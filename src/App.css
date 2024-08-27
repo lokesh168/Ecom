@@ -25,3 +25,14 @@ body {
     width: min(var(--max-width), 100% - (var(--padding) * 2));
     margin-inline: auto;
 }
+
+#navbar a {
+    padding: 15px 20px;
+    border-radius: 4px;
+}
+#navbar a.active {
+    background: #ededed;
+    padding: 15px 20px;
+    border-radius: 4px;
+    transition: 0.3s ease-in-out;
+}

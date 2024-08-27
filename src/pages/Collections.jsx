@@ -104,7 +104,7 @@ const Collections = () => {
                             <button
                                 key={index}
                                 onClick={() => receipeNameHandler(item)}
-                                className="my-1 p-4 border-b-2 border-black hover:bg-[#AF8260]"
+                                className="my-1 p-4 rounded transition hover:transition-all hover:bg-[#ededed]"
                             >
                                 {item}
                             </button>
@@ -131,7 +131,7 @@ const Collections = () => {
                                             to={`/singleProductPage/${item.id}`}
                                             key={index}
                                         >
-                                            <div className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
+                                            <div className="mx-5 text-center w-64 mb-10 hover:transition hover:bg-[#ededed] transition cursor-pointer">
                                                 <img
                                                     className="rounded"
                                                     src={item.image}

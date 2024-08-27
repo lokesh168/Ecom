@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import { BriefcaseBusiness, Leaf, UserRound } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const { totalUniqueItems } = useCart();
@@ -11,19 +12,19 @@ const Navbar = () => {
                 <div className="flex space-x-4">
                     <Leaf />
                     <Link to="/">
-                        <h2 className="font-signature font-bold tracking-wider">
+                        <h2 className="font-signature text-2xl font-bold tracking-wider">
                             Food Mania
                         </h2>
                     </Link>
                 </div>
                 <div>
-                    <ul className="flex space-x-10">
-                        <Link to="/collections" className="uppercase">
+                    <ul id="navbar" className="flex space-x-10">
+                        <NavLink to="/collections" className="uppercase">
                             Food Collection
-                        </Link>
-                        <Link to="/account" className="uppercase">
+                        </NavLink>
+                        <NavLink to="/account" className="uppercase">
                             Contact Us
-                        </Link>
+                        </NavLink>
                     </ul>
                 </div>
                 <div className="flex space-x-5">
