@@ -4,19 +4,22 @@ import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
 
+import googlePay from "../assets/google-pay.svg";
+import phonePay from "../assets/phonepe-icon.svg";
+import razorPay from "../assets/razorpay-icon.svg";
+import payTm from "../assets/paytm-icon.svg";
+
 const Bag = () => {
     const {
         // isEmpty,
         // totalUniqueItems,
         items,
-        totalItems,
         cartTotal,
         updateItemQuantity,
         removeItem,
         // emptyCart,
     } = useCart();
 
-    console.log(totalItems);
     return (
         <div>
             <div className="px-10 py-5 flex justify-evenly mt-5">
@@ -50,7 +53,9 @@ const Bag = () => {
                                     >
                                         -
                                     </button>
-                                    {item.quantity}
+                                    <span className="font-bold">
+                                        {item.quantity}
+                                    </span>
                                     <button
                                         onClick={() =>
                                             updateItemQuantity(
@@ -123,26 +128,18 @@ const Bag = () => {
                     <div className="p-4 px-6 py-10 mt-10 w-[22rem] bg-[#F4F4F4]">
                         <h2 className="text-2xl">Payment Type</h2>
                         <div className="flex space-x-4 mt-4">
+                            <img className="w-14" src={googlePay} alt="gpay" />
+                            <img className="w-14" src={payTm} alt="phonePay" />
                             <img
                                 className="w-14"
-                                src="https://cdn.iconscout.com/icon/free/png-256/free-google-pay-3628807-3030084.png?f=webp&w=256"
-                                alt="gpay"
+                                src={razorPay}
+                                alt="razorPay"
                             />
                             <img
                                 className="w-14"
-                                src="https://cdn.iconscout.com/icon/free/png-256/free-google-pay-3628807-3030084.png?f=webp&w=256"
-                                alt="gpay"
-                            />
-                            <img
-                                className="w-14"
-                                src="https://cdn.iconscout.com/icon/free/png-256/free-google-pay-3628807-3030084.png?f=webp&w=256"
-                                alt="gpay"
-                            />
-                            <img
-                                className="w-14"
-                                src="https://cdn.iconscout.com/icon/free/png-256/free-google-pay-3628807-3030084.png?f=webp&w=256"
-                                alt="gpay"
-                            />
+                                src={phonePay}
+                                alt="phonepay"
+                            />{" "}
                         </div>
                     </div>
 

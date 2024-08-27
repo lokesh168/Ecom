@@ -1,21 +1,19 @@
-import { BriefcaseBusiness, Search, Leaf, UserRound } from "lucide-react";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../App";
 import { useCart } from "react-use-cart";
+import { BriefcaseBusiness, Leaf, UserRound } from "lucide-react";
 
 const Navbar = () => {
-    const cartVar = useContext(CartContext);
-
     const { totalUniqueItems } = useCart();
 
     return (
-        <nav>
+        <nav className="container">
             <div className="flex justify-between px-24 py-5 border-b-2 border-black">
                 <div className="flex space-x-4">
                     <Leaf />
                     <Link to="/">
-                        <h2>JunkFood Mania</h2>
+                        <h2 className="font-signature font-bold tracking-wider">
+                            Food Mania
+                        </h2>
                     </Link>
                 </div>
                 <div>
@@ -29,7 +27,6 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="flex space-x-5">
-                    <Search className="cursor-pointer" />
                     <Link to="/account" className="uppercase">
                         <UserRound />
                     </Link>

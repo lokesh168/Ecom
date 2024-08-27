@@ -68,7 +68,24 @@ const Collections = () => {
             {/* Collections */}
             <div>
                 <h1 className="text-center my-10 text-4xl">Our Collection</h1>
-
+                <div>
+                    <button
+                        onClick={sortFunctionHandlerByName}
+                        className="py-2 px-4  bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
+                    >
+                        <p className="text-right">
+                            {toggle ? "Sort" : "Sorted"}
+                        </p>
+                    </button>
+                    <button
+                        onClick={searchBtnClickHandler}
+                        className="py-2 px-4 bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
+                    >
+                        <p className="text-right">
+                            {toggle ? "Search" : "Search"}
+                        </p>
+                    </button>
+                </div>
                 <div
                     className={`p-5 ${
                         toggle ? "hidden" : "block"
@@ -106,22 +123,6 @@ const Collections = () => {
                             )}
                         </div>
                         <div className="container flex flex-wrap mx-auto relative">
-                            <button
-                                onClick={sortFunctionHandlerByName}
-                                className="p-4  bg-amber-500 hover:bg-amber-600  active:bg-amber-700 focus:outline-none focus:ring focus:ring-amber-900 rounded-md absolute top-[0%] right-0"
-                            >
-                                <p className="text-right">
-                                    {toggle ? "Sort" : "Sorted"}
-                                </p>
-                            </button>
-                            <button
-                                onClick={searchBtnClickHandler}
-                                className="p-4 bg-amber-500 hover:bg-amber-600  active:bg-amber-700 focus:outline-none focus:ring focus:ring-amber-900 rounded-md absolute top-[2%] right-0"
-                            >
-                                <p className="text-right">
-                                    {toggle ? "Search" : "Search"}
-                                </p>
-                            </button>
                             {/* <HashLoader color="#AF8260" size={60} /> */}
                             {showData ? (
                                 <>
