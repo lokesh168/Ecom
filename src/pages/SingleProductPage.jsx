@@ -1,6 +1,8 @@
 import { lazy, useEffect, useState } from "react";
 import { Coffee, CookingPot, Microwave, Cookie } from "lucide-react";
 import { useParams } from "react-router-dom";
+import Loading from "../components/Loading";
+import { useCart } from "react-use-cart";
 // import Modal from "../components/Modal";
 
 export const SimilarProduct = lazy(() =>
@@ -9,24 +11,49 @@ export const SimilarProduct = lazy(() =>
 
 const SingleProductPage = () => {
     const [singleProductData, setSingleProductData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const { addItem } = useCart();
     let [count, setCount] = useState(1);
     let { id } = useParams();
 
     if (count < 1) {
         count = 1;
+        setLoading;
     }
 
     async function fetchRestApi() {
+        setLoading(true);
         const uri = await fetch(`https://dummyjson.com/recipes/${id}`);
 
         const response = await uri.json();
 
         setSingleProductData(response);
+
+        setLoading(false);
     }
+
+    // function cartHandlerButton(name, price) {
+    //     setCartCounter(cartCounter + 1);
+    //     const productName = {
+    //         name,
+    //         price,
+    //         quantity: count,
+    //     };
+    //     setData([productName, ...data]);
+    // }
 
     useEffect(() => {
         fetchRestApi();
     }, []);
+
+    const handleAddToCart = () => {
+        const product = {
+            ...singleProductData,
+            price: singleProductData.caloriesPerServing, // Add the price if your cart requires it
+        };
+
+        addItem(product);
+    };
 
     return (
         <div>
@@ -34,11 +61,15 @@ const SingleProductPage = () => {
                 {/* Home Cover */}
                 <div className="flex mx-auto justify-center space-x-16">
                     <div>
-                        <img
-                            className="w-96 rounded-md"
-                            src={singleProductData.image}
-                            alt="home-banner"
-                        />
+                        {loading ? (
+                            <Loading />
+                        ) : (
+                            <img
+                                className="w-96 rounded-md"
+                                src={singleProductData.image}
+                                alt="home-banner"
+                            />
+                        )}
                     </div>
                     <div className="min-w-24 p-10 ml-10">
                         <h1 className="my-5 text-3xl font-bold">
@@ -65,7 +96,10 @@ const SingleProductPage = () => {
                                     +
                                 </span>
                             </div>
-                            <button className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all">
+                            <button
+                                className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all"
+                                onClick={handleAddToCart}
+                            >
                                 add to bag
                             </button>
                         </div>

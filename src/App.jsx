@@ -10,31 +10,36 @@ import Accounts from "./pages/Accounts";
 import SingleProductPage from "./pages/SingleProductPage";
 import Loading from "./components/Loading";
 const Footer = lazy(() => import("./components/Footer"));
-
+import { CartProvider } from "react-use-cart";
 import "./App.css";
 
 export const CartContext = createContext();
 
 function App() {
     return (
-        <Router>
-            <Suspense fallback={<Loading />}>
-                <CartContext.Provider value={12}>
-                    <Navbar />
-                    <Routes>
-                        <Route index element={<Home />} />
-                        <Route path="/bag" element={<Bag />} />
-                        <Route path="/collections" element={<Collections />} />
-                        <Route path="/account" element={<Accounts />} />
-                        <Route
-                            path="/singleProductPage/:id"
-                            element={<SingleProductPage />}
-                        />
-                    </Routes>
-                    <Footer />
-                </CartContext.Provider>
-            </Suspense>
-        </Router>
+        <CartProvider>
+            <Router>
+                <Suspense fallback={<Loading />}>
+                    <CartContext.Provider value={12}>
+                        <Navbar />
+                        <Routes>
+                            <Route index element={<Home />} />
+                            <Route path="/bag" element={<Bag />} />
+                            <Route
+                                path="/collections"
+                                element={<Collections />}
+                            />
+                            <Route path="/account" element={<Accounts />} />
+                            <Route
+                                path="/singleProductPage/:id"
+                                element={<SingleProductPage />}
+                            />
+                        </Routes>
+                        <Footer />
+                    </CartContext.Provider>
+                </Suspense>
+            </Router>
+        </CartProvider>
     );
 }
 

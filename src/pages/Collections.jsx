@@ -11,6 +11,10 @@ const Collections = () => {
     const [toggle, setToggle] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    function searchBtnClickHandler() {
+        setToggle(!toggle);
+    }
+
     function removeDuplicates(arr) {
         let unique = arr.reduce(function (acc, curr) {
             if (!acc.includes(curr.cuisine)) acc.push(curr.cuisine);
@@ -44,7 +48,6 @@ const Collections = () => {
 
     function sortFunctionHandlerByName() {
         setSortByName(toggle ? "name" : "");
-        setToggle(!toggle);
     }
 
     useEffect(() => {
@@ -65,6 +68,18 @@ const Collections = () => {
             {/* Collections */}
             <div>
                 <h1 className="text-center my-10 text-4xl">Our Collection</h1>
+
+                <div
+                    className={`p-5 ${
+                        toggle ? "hidden" : "block"
+                    } transition border-black duration-300`}
+                >
+                    <input
+                        className="border-l-4 px-2 border-black w-full py-2 outline-none text-2xl"
+                        type="text"
+                        placeholder="Search Your Favourite Dish..."
+                    />
+                </div>
 
                 <div className="grid grid-cols-5 grid-rows-5 gap-4 p-5">
                     <div className="col-span-1 row-span-5 flex flex-col">
@@ -99,8 +114,15 @@ const Collections = () => {
                                     {toggle ? "Sort" : "Sorted"}
                                 </p>
                             </button>
+                            <button
+                                onClick={searchBtnClickHandler}
+                                className="p-4 bg-amber-500 hover:bg-amber-600  active:bg-amber-700 focus:outline-none focus:ring focus:ring-amber-900 rounded-md absolute top-[2%] right-0"
+                            >
+                                <p className="text-right">
+                                    {toggle ? "Search" : "Search"}
+                                </p>
+                            </button>
                             {/* <HashLoader color="#AF8260" size={60} /> */}
-
                             {showData ? (
                                 <>
                                     {filteredList?.map((item, index) => (
@@ -144,10 +166,7 @@ const Collections = () => {
                                                     {item.name}
                                                 </p>
                                                 <p className="uppercase font-bold text-sm py-2">
-                                                    ${" "}
-                                                    {Math.floor(
-                                                        Math.random() * 200
-                                                    )}
+                                                    ₹ {item.caloriesPerServing}
                                                 </p>
                                             </div>
                                         </Link>
