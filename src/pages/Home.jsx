@@ -128,12 +128,13 @@ const Home = () => {
                         tea
                     </h1>
                     <h2 className="my-5 w-96">
-                        Lorem ipsum dolor sit amet consectetur. Orci nibh nullam
-                        risus adipiscing odio. Neque lacus nibh eros in.
+                        Each day in the world of wholesale bloggers is special,
+                        just like our tea.
                     </h2>
                     <h2 className="my-5 w-96">
-                        Lorem ipsum dolor sit amet consectetur. Orci nibh nullam
-                        risus adipiscing odio. Neque lacus nibh eros in.
+                        Every sip delivers a unique experience, blending rich
+                        flavors that inspire creativity and connection with
+                        others.
                     </h2>
                     <button className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all">
                         Browse Teas

@@ -1,6 +1,5 @@
 import { ChevronRight } from "lucide-react";
 import SimilarProduct from "../components/SimilarProduct";
-import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
 
@@ -21,15 +20,15 @@ const Bag = () => {
     } = useCart();
 
     return (
-        <div>
+        <section>
             <div className="px-10 py-5 flex justify-evenly mt-5">
                 <p className="uppercase">1.&nbsp; My Bag</p>
 
                 <p className="uppercase">2.&nbsp; Delivery</p>
                 <p className="uppercase">3.&nbsp; Review & Payment</p>
             </div>
-            <section className="px-10 py-5 mt-5 flex justify-evenly">
-                <div className="border-2 p-4 px-6 h-96">
+            <div className="px-10 py-5 mt-5 flex justify-evenly">
+                <div className="border-2 p-4 px-6 h-full">
                     <h1>My Bag</h1>
                     {items.map((item, index) => (
                         <div
@@ -49,7 +48,7 @@ const Bag = () => {
                                                 item.quantity - 1
                                             )
                                         }
-                                        className="uppercase mx-2 w-1 py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all"
+                                        className="uppercase mx-2 py-2 px-5 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all"
                                     >
                                         -
                                     </button>
@@ -63,7 +62,7 @@ const Bag = () => {
                                                 item.quantity + 1
                                             )
                                         }
-                                        className="uppercase mx-2 w-1 py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all"
+                                        className="uppercase mx-2 py-2 px-5 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all"
                                     >
                                         +
                                     </button>
@@ -74,8 +73,13 @@ const Bag = () => {
                                         Remove
                                     </button>
                                 </div>
-                                <div>
-                                    Quantity : <b>{item.quantity}</b>
+                                <div className="flex space-x-4">
+                                    <div>
+                                        Quantity : <b>{item.quantity}</b>
+                                    </div>
+                                    <div>
+                                        Price : <b>{item.price}</b>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -166,11 +170,10 @@ const Bag = () => {
                         </button>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <SimilarProduct />
-            <Footer />
-        </div>
+        </section>
     );
 };
 

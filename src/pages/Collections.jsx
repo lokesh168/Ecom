@@ -37,7 +37,7 @@ const Collections = () => {
     async function fetchRestApi() {
         setLoading(true);
         const uri = await fetch(
-            `https://dummyjson.com/recipes?delay=2000&sortBy=${sortByName}`
+            `https://dummyjson.com/recipes?delay=1000&sortBy=${sortByName}`
         );
 
         const response = await uri.json();

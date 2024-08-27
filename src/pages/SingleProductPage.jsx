@@ -3,7 +3,7 @@ import { Coffee, CookingPot, Microwave, Cookie } from "lucide-react";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useCart } from "react-use-cart";
-// import Modal from "../components/Modal";
+import { useReward } from "react-rewards";
 
 export const SimilarProduct = lazy(() =>
     import("../components/SimilarProduct")
@@ -11,8 +11,10 @@ export const SimilarProduct = lazy(() =>
 
 const SingleProductPage = () => {
     const [singleProductData, setSingleProductData] = useState([]);
+    const { reward, isAnimating } = useReward("rewardId", "confetti");
     const [loading, setLoading] = useState(false);
     const { addItem } = useCart();
+
     let [count, setCount] = useState(1);
     let { id } = useParams();
 
@@ -32,16 +34,6 @@ const SingleProductPage = () => {
         setLoading(false);
     }
 
-    // function cartHandlerButton(name, price) {
-    //     setCartCounter(cartCounter + 1);
-    //     const productName = {
-    //         name,
-    //         price,
-    //         quantity: count,
-    //     };
-    //     setData([productName, ...data]);
-    // }
-
     useEffect(() => {
         fetchRestApi();
     }, []);
@@ -49,10 +41,11 @@ const SingleProductPage = () => {
     const handleAddToCart = () => {
         const product = {
             ...singleProductData,
-            price: singleProductData.caloriesPerServing, // Add the price if your cart requires it
+            price: singleProductData.caloriesPerServing,
         };
 
         addItem(product);
+        reward();
     };
 
     return (
@@ -99,17 +92,13 @@ const SingleProductPage = () => {
                             <button
                                 className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all"
                                 onClick={handleAddToCart}
+                                disabled={isAnimating}
                             >
-                                add to bag
+                                <span id="rewardId">add to bag</span>
                             </button>
                         </div>
                     </div>
                 </div>
-
-                {/* Modal */}
-                {/* <div className="absolute backdrop-filter backdrop-blur-lg inset-10 w-96 mx-auto bg-[#dbd6d6]  backdrop-brightness-50">
-                    <Modal />
-                </div> */}
             </section>
 
             <div className="flex justify-evenly my-5 py-10  bg-[#F4F4F4] px-10">
