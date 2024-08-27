@@ -67,24 +67,28 @@ const Collections = () => {
 
             {/* Collections */}
             <div>
-                <h1 className="text-center my-10 text-4xl">Our Collection</h1>
-                <div>
-                    <button
-                        onClick={sortFunctionHandlerByName}
-                        className="py-2 px-4  bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
-                    >
-                        <p className="text-right">
-                            {toggle ? "Sort" : "Sorted"}
-                        </p>
-                    </button>
-                    <button
-                        onClick={searchBtnClickHandler}
-                        className="py-2 px-4 bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
-                    >
-                        <p className="text-right">
-                            {toggle ? "Search" : "Search"}
-                        </p>
-                    </button>
+                <div className="my-10">
+                    <h1 className="text-center text-4xl">Our Collection</h1>
+                </div>
+                <div className="container">
+                    <div className="flex justify-end">
+                        <button
+                            onClick={sortFunctionHandlerByName}
+                            className="py-2 px-4  bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
+                        >
+                            <p className="text-right">
+                                {toggle ? "Sort" : "Sorted"}
+                            </p>
+                        </button>
+                        <button
+                            onClick={searchBtnClickHandler}
+                            className="py-2 px-4 bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
+                        >
+                            <p className="text-right">
+                                {toggle ? "Search" : "Search"}
+                            </p>
+                        </button>
+                    </div>
                 </div>
                 <div
                     className={`p-5 ${
@@ -122,7 +126,7 @@ const Collections = () => {
                                 ""
                             )}
                         </div>
-                        <div className="container flex flex-wrap mx-auto relative">
+                        <div className="container flex flex-wrap relative">
                             {/* <HashLoader color="#AF8260" size={60} /> */}
                             {showData ? (
                                 <>
@@ -131,7 +135,7 @@ const Collections = () => {
                                             to={`/singleProductPage/${item.id}`}
                                             key={index}
                                         >
-                                            <div className="mx-5 text-center w-64 mb-10 hover:transition hover:bg-[#ededed] transition cursor-pointer">
+                                            <div className="mx-5 text-center w-[12rem] mb-10 hover:transition hover:bg-[#ededed] transition cursor-pointer">
                                                 <img
                                                     className="rounded"
                                                     src={item.image}
@@ -157,7 +161,7 @@ const Collections = () => {
                                             to={`/singleProductPage/${item.id}`}
                                             key={index}
                                         >
-                                            <div className="mx-5 text-center w-64 mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
+                                            <div className="mx-5 text-center w-[12rem] mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
                                                 <img
                                                     className="rounded"
                                                     src={item.image}

@@ -1,9 +1,12 @@
+import CatItemsList from "./CatItemsList";
+import collectionArray from "../data/collectionArr";
+
 const SimilarProduct = () => {
     return (
         <div className="my-28">
             <h2 className="text-center text-4xl">Popular This Season</h2>
 
-            <div className="container flex justify-evenly my-10 mx-auto">
+            {/* <div className="container flex justify-evenly my-10 mx-auto">
                 <div className="mx-5 text-center">
                     <img
                         className="rounded"
@@ -43,6 +46,16 @@ const SimilarProduct = () => {
                         black tea
                     </p>
                 </div>
+            </div> */}
+
+            <div className="flex">
+                {collectionArray.map((singleCollection, index) => (
+                    <CatItemsList
+                        key={index}
+                        title={singleCollection.title}
+                        image={singleCollection.image}
+                    />
+                ))}
             </div>
         </div>
     );

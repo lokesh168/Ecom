@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import { useCart } from "react-use-cart";
 import { useReward } from "react-rewards";
+import toast from "react-hot-toast";
 
 export const SimilarProduct = lazy(() =>
     import("../components/SimilarProduct")
@@ -38,7 +39,7 @@ const SingleProductPage = () => {
         fetchRestApi();
     }, []);
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (productName) => {
         const product = {
             ...singleProductData,
             price: singleProductData.caloriesPerServing,
@@ -46,6 +47,7 @@ const SingleProductPage = () => {
 
         addItem(product);
         reward();
+        toast.success(`${productName} Added To Cart!`);
     };
 
     return (
@@ -91,7 +93,9 @@ const SingleProductPage = () => {
                             </div>
                             <button
                                 className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all"
-                                onClick={handleAddToCart}
+                                onClick={() =>
+                                    handleAddToCart(singleProductData.name)
+                                }
                                 disabled={isAnimating}
                             >
                                 <span id="rewardId">add to bag</span>

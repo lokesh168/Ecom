@@ -1,12 +1,13 @@
 import { ChevronRight } from "lucide-react";
-import SimilarProduct from "../components/SimilarProduct";
 import { useCart } from "react-use-cart";
 import { Link } from "react-router-dom";
 
+import SimilarProduct from "../components/SimilarProduct";
 import googlePay from "../assets/google-pay.svg";
 import phonePay from "../assets/phonepe-icon.svg";
 import razorPay from "../assets/razorpay-icon.svg";
 import payTm from "../assets/paytm-icon.svg";
+import toast from "react-hot-toast";
 
 const Bag = () => {
     const {
@@ -19,6 +20,10 @@ const Bag = () => {
         // emptyCart,
     } = useCart();
 
+    function removeItemHandler(id) {
+        removeItem(id);
+        toast.success("Removed Item From Bag");
+    }
     return (
         <section>
             <div className="px-10 py-5 flex justify-evenly mt-5">
@@ -35,11 +40,16 @@ const Bag = () => {
                             className="flex justify-evenly my-4 space-x-6"
                             key={index}
                         >
-                            <img className="w-20" src={item.image} alt="tea" />
-                            <div className="space-y-8">
-                                <h2>{item.title}</h2>
-                            </div>
+                            <img
+                                className="w-28 rounded"
+                                src={item.image}
+                                alt="tea"
+                            />
+
                             <div className="flex flex-col space-y-2 justify-end items-end">
+                                <div>
+                                    <h2 className="">{item.name}</h2>
+                                </div>
                                 <div>
                                     <button
                                         onClick={() =>
@@ -67,7 +77,9 @@ const Bag = () => {
                                         +
                                     </button>
                                     <button
-                                        onClick={() => removeItem(item.id)}
+                                        onClick={() =>
+                                            removeItemHandler(item.id)
+                                        }
                                         className="uppercase w-25  py-2 px-10 rounded text-sm text-white border-2 bg-black border-black transition-all"
                                     >
                                         Remove
