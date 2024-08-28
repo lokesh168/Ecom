@@ -54,23 +54,25 @@ const SingleProductPage = () => {
         <div>
             <section className="px-10 py-5 mt-5 relative">
                 {/* Home Cover */}
-                <div className="flex mx-auto justify-center space-x-16">
+                <div className="flex flex-col md:flex-row mx-auto justify-center md:space-x-16">
                     <div>
                         {loading ? (
                             <Loading />
                         ) : (
                             <img
-                                className="w-96 rounded-md"
+                                className="md:w-96 rounded-md"
                                 src={singleProductData.image}
                                 alt="home-banner"
                             />
                         )}
                     </div>
-                    <div className="min-w-24 p-10 ml-10">
+                    <div className="md:min-w-24 md:p-10 mx-0 md:ml-10">
                         <h1 className="my-5 text-3xl font-bold">
                             {singleProductData.name}
                         </h1>
-                        <h2 className="my-5 w-96">{singleProductData.name}</h2>
+                        <h2 className="my-5 md:w-96">
+                            {singleProductData.name}
+                        </h2>
                         <p className="text-4xl">
                             ₹ {singleProductData.caloriesPerServing}
                         </p>
@@ -92,7 +94,7 @@ const SingleProductPage = () => {
                                 </span>
                             </div>
                             <button
-                                className="uppercase bg-slate-900 py-5 px-10 rounded-md text-white hover:bg-[#AF8260] transition-all"
+                                className="uppercase bg-slate-900 p-5 md:py-5 md:px-10 rounded-md text-white hover:bg-[#AF8260] transition-all"
                                 onClick={() =>
                                     handleAddToCart(singleProductData.name)
                                 }
@@ -105,7 +107,7 @@ const SingleProductPage = () => {
                 </div>
             </section>
 
-            <div className="flex justify-evenly my-5 py-10  bg-[#F4F4F4] px-10">
+            <div className="flex flex-col md:justify-evenly my-5 p-10  bg-[#F4F4F4]">
                 <div>
                     <h2 className="text-4xl my-4">Steeping instructions</h2>
                     <div className="space-y-5">
@@ -148,7 +150,7 @@ const SingleProductPage = () => {
                     </div>
                 </div>
                 <div>
-                    <h2 className="text-4xl my-4 text-right">
+                    <h2 className="text-4xl my-4 text-left md:text-right">
                         About this Dish
                     </h2>
                     <div className="space-y-5">
@@ -165,14 +167,6 @@ const SingleProductPage = () => {
                     </div>
 
                     <h2 className="text-4xl my-4">Ingredient</h2>
-                    {/* <div>
-                        {singleProductData?.ingredients?.map((item, index) => (
-                            <span className="" key={index}>
-                                {item}
-                            </span>
-                        ))}
-                    </div> */}
-
                     <div>
                         <p>Ingredients</p>
                         <div></div>
@@ -183,7 +177,9 @@ const SingleProductPage = () => {
             </div>
 
             {/* Similar products you might like */}
-            <SimilarProduct />
+            <div className="hidden md:block">
+                <SimilarProduct />
+            </div>
         </div>
     );
 };
