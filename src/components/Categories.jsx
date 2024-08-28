@@ -6,7 +6,7 @@ const Categories = () => {
         <section>
             <h2 className="text-center text-4xl">Our Collection</h2>
             <div className="container">
-                <div className="flex">
+                <div className="flex flex-wrap md:flex-nowrap">
                     {collectionArray.map((singleCollection, index) => (
                         <CatItemsList
                             key={index}

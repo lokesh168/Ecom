@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext } from "react";
+import { CartProvider } from "react-use-cart";
 import { lazy } from "react";
 import { Suspense } from "react";
 import Home from "./pages/Home";
@@ -10,7 +11,6 @@ import Accounts from "./pages/Accounts";
 import SingleProductPage from "./pages/SingleProductPage";
 import Loading from "./components/Loading";
 const Footer = lazy(() => import("./components/Footer"));
-import { CartProvider } from "react-use-cart";
 import "./App.css";
 
 export const CartContext = createContext();

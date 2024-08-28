@@ -37,7 +37,7 @@ const SingleProductPage = () => {
 
     useEffect(() => {
         fetchRestApi();
-    });
+    }, []);
 
     const handleAddToCart = (productName) => {
         const product = {

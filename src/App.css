@@ -4,10 +4,15 @@
     font-family: "signature";
     src: url("./fonts/optimistic-signature.regular.ttf");
 }
+
+/* Body */
+
 body {
     font-family: "Lato", sans-serif;
     font-style: normal;
 }
+
+/* Font Fam */
 #signature {
     font-family: "signature";
     font-size: 3rem;
@@ -18,6 +23,8 @@ body {
     font-family: "signature";
 }
 
+/* Primary Container Class */
+
 .container {
     --max-width: 1110px;
     --padding: 1rem;
@@ -25,6 +32,8 @@ body {
     width: min(var(--max-width), 100% - (var(--padding) * 2));
     margin-inline: auto;
 }
+
+/* Navbar  */
 
 #navbar a {
     padding: 15px 20px;
@@ -35,4 +44,10 @@ body {
     padding: 15px 20px;
     border-radius: 4px;
     transition: 0.3s ease-in-out;
+}
+
+/* Responsive Modal */
+
+.react-responsive-modal-modal {
+    border-radius: 6px;
 }
