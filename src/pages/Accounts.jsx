@@ -3,8 +3,8 @@ import Modal from "../components/Modal";
 
 const Accounts = () => {
     return (
-        <section className="px-10 py-5 mt-5 flex justify-evenly">
-            <div className="py-10 px-7 h-80 w-96 bg-[#F4F4F4]">
+        <section className="px-2 md:px-10 py-5 mt-5 md:flex md:justify-evenly">
+            <div className="px-2 md:py-10  h-80 md:w-96 bg-[#F4F4F4]">
                 <h1 className="mb-3 text-2xl">Already a customer?</h1>
                 <p className="mb-3 font-medium">
                     Welcome back! Sign in for faster checkout.
@@ -23,9 +23,8 @@ const Accounts = () => {
                     sign in
                 </button>
             </div>
-
             <div>
-                <div className="py-10 px-7  w-96 bg-[#F4F4F4]">
+                <div className="py-10 px-7  md:w-96 bg-[#F4F4F4]">
                     <h1 className="mb-3 text-2xl">New to our company?</h1>
                     <p className="mb-3 font-medium">
                         Create an account for the best experience
@@ -47,7 +46,7 @@ const Accounts = () => {
                     </button>
                 </div>
 
-                <div className="py-10 px-7 mt-10 w-96 bg-[#F4F4F4]">
+                <div className="py-10 px-7 mt-10 md:w-96 bg-[#F4F4F4]">
                     <h1 className="mb-3 text-2xl">Guest Checkout</h1>
                     <p className="mb-3 font-medium">
                         No ready to become a customer?
@@ -58,7 +57,9 @@ const Accounts = () => {
                     </button>
                 </div>
             </div>
-            <Modal />
+            <div className="hidden md:block">
+                <Modal />
+            </div>{" "}
         </section>
     );
 };

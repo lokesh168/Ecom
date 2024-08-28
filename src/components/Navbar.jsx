@@ -23,7 +23,7 @@ const Navbar = () => {
             >
                 <ul
                     id="navbar"
-                    className="flex md:space-x-5 flex-col p-20 py-32 rounded-md"
+                    className="flex md:space-x-5 flex-col p-16 py-32 rounded-md"
                 >
                     <NavLink to="/" className="uppercase">
                         Home
@@ -43,7 +43,7 @@ const Navbar = () => {
                 <div className="flex space-x-4 items-center">
                     <Leaf />
                     <Link to="/">
-                        <h2 className="font-signature text-3xl font-bold tracking-wider">
+                        <h2 className="font-signature text-sm md:text-3xl font-bold tracking-wider">
                             Food Mania
                         </h2>
                     </Link>
@@ -72,9 +72,9 @@ const Navbar = () => {
                             {totalUniqueItems}
                         </div>
                     </Link>
-                </div>
-                <div className="md:hidden">
-                    <Menu onClick={onOpenModal} />
+                    <div className="md:hidden">
+                        <Menu onClick={onOpenModal} />
+                    </div>
                 </div>
             </div>
         </nav>
