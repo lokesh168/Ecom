@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
+import Modal from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
 
 const Collections = () => {
     const [receipe, setReceipe] = useState();
@@ -10,6 +12,10 @@ const Collections = () => {
     const [showData, setShowData] = useState(false);
     const [toggle, setToggle] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     function searchBtnClickHandler() {
         setToggle(!toggle);
@@ -56,7 +62,25 @@ const Collections = () => {
 
     return (
         <section>
-            {/* Banner */}
+            <Modal
+                classNames="p-5 rounded-md"
+                open={open}
+                onClose={onCloseModal}
+                center
+            >
+                <div className="flex flex-col px-14">
+                    {dishNames?.map((item, index) => (
+                        <button
+                            key={index}
+                            onClick={() => receipeNameHandler(item)}
+                            className="my-1 p-4 rounded transition hover:transition-all hover:bg-[#ededed]"
+                        >
+                            {item}
+                        </button>
+                    ))}
+                </div>
+            </Modal>
+
             <div>
                 <img
                     className="h-60 w-full object-cover"
@@ -65,13 +89,18 @@ const Collections = () => {
                 />
             </div>
 
-            {/* Collections */}
             <div>
                 <div className="my-10">
                     <h1 className="text-center text-4xl">Our Collection</h1>
                 </div>
                 <div className="container">
-                    <div className="flex justify-end">
+                    <div className="flex justify-center md:justify-end">
+                        <button
+                            onClick={onOpenModal}
+                            className="py-2 px-4 bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
+                        >
+                            <p className="text-right">Filter</p>
+                        </button>
                         <button
                             onClick={sortFunctionHandlerByName}
                             className="py-2 px-4  bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
@@ -103,7 +132,7 @@ const Collections = () => {
                 </div>
 
                 <div className="grid grid-cols-5 grid-rows-5 gap-4 p-5">
-                    <div className="col-span-1 row-span-5 flex flex-col">
+                    <div className="col-span-1 row-span-5 flex-col hidden md:block">
                         {dishNames?.map((item, index) => (
                             <button
                                 key={index}
