@@ -6,7 +6,7 @@ const SimilarProduct = () => {
         <div className="my-28">
             <h2 className="text-center text-4xl">Popular This Season</h2>
 
-            <div className="flex">
+            <div className="flex flex-wrap">
                 {collectionArray.map((singleCollection, index) => (
                     <CatItemsList
                         key={index}

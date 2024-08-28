@@ -26,18 +26,18 @@ const Bag = () => {
     }
     return (
         <section>
-            <div className="px-10 py-5 flex justify-evenly mt-5">
+            <div className="px-0 md:px-10 py-5 flex justify-evenly mt-5">
                 <p className="uppercase">1.&nbsp; My Bag</p>
 
                 <p className="uppercase">2.&nbsp; Delivery</p>
                 <p className="uppercase">3.&nbsp; Review & Payment</p>
             </div>
-            <div className="px-10 py-5 mt-5 flex justify-evenly">
+            <div className="px-5 md:px-10 py-5 mt-5 flex flex-col md:flex-row md:justify-evenly">
                 <div className="border-2 p-4 px-6 h-full">
-                    <h1>My Bag</h1>
+                    <p>My Bag</p>
                     {items.map((item, index) => (
                         <div
-                            className="flex justify-evenly my-4 space-x-6"
+                            className="flex justify-evenly my-4 space-x-6 border-b-2 border-black py-2"
                             key={index}
                         >
                             <img
@@ -85,13 +85,13 @@ const Bag = () => {
                                         Remove
                                     </button>
                                 </div>
-                                <div className="flex space-x-4">
-                                    <div>
+                                <div className="flex space-x-2 md:space-x-4">
+                                    <p className="text-sm md:text-base">
                                         Quantity : <b>{item.quantity}</b>
-                                    </div>
-                                    <div>
+                                    </p>
+                                    <p className="text-sm md:text-base">
                                         Price : <b>{item.price}</b>
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@ const Bag = () => {
                 </div>
 
                 <div>
-                    <div className="bg-[#F4F4F4] p-4 px-6 w-[22rem]">
+                    <div className="bg-[#F4F4F4] p-4 px-6 w-full md:w-[22rem] mt-10 md:mt-0">
                         <h1>Order summery</h1>
 
                         <hr />
@@ -141,7 +141,7 @@ const Bag = () => {
                         </button>
                     </div>
 
-                    <div className="p-4 px-6 py-10 mt-10 w-[22rem] bg-[#F4F4F4]">
+                    <div className="p-4 px-6 py-10 mt-10 w-full md:w-[22rem] bg-[#F4F4F4]">
                         <h2 className="text-2xl">Payment Type</h2>
                         <div className="flex space-x-4 mt-4">
                             <img className="w-14" src={googlePay} alt="gpay" />
@@ -159,7 +159,7 @@ const Bag = () => {
                         </div>
                     </div>
 
-                    <div className="py-10 px-7 mt-10 w-[22rem] bg-[#F4F4F4]">
+                    <div className="py-10 px-7 mt-10 w-full md:w-[22rem] bg-[#F4F4F4]">
                         <h1 className="mb-3 text-2xl">New to our company?</h1>
                         <p className="mb-3 font-medium">
                             Create an account for the best experience
