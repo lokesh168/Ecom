@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 
 const Modal = () => {
@@ -67,9 +68,11 @@ const Modal = () => {
                     ₹ {cartTotal !== 0 && Math.floor(cartTotal) + 40}{" "}
                 </p>
             </div>
-            <button className="uppercase w-full  py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all">
-                purchase
-            </button>
+            <Link to="/bag">
+                <button className="uppercase w-full  py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all">
+                    purchase
+                </button>
+            </Link>
             <button className="uppercase w-full  py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all">
                 cancel
             </button>
