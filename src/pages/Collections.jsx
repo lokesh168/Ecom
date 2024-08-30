@@ -97,7 +97,7 @@ const Collections = () => {
                     <div className="flex justify-center md:justify-end">
                         <button
                             onClick={onOpenModal}
-                            className="py-2 px-4 bg-transparent border focus:outline-none focus:ring focus:ring-black rounded mx-2"
+                            className="py-2 px-4 bg-transparent md:hidden border focus:outline-none focus:ring focus:ring-black rounded mx-2"
                         >
                             <p className="text-right">Filter</p>
                         </button>
@@ -190,7 +190,7 @@ const Collections = () => {
                                             to={`/singleProductPage/${item.id}`}
                                             key={index}
                                         >
-                                            <div className="mx-5 text-center w-[12rem] mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
+                                            <div className="mx-5 text-center w-[6.5rem] md:w-[12rem] mb-10 hover:bg-[#d3d3d3] transition cursor-pointer">
                                                 <img
                                                     className="rounded"
                                                     src={item.image}

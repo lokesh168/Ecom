@@ -24,6 +24,39 @@ const Bag = () => {
         removeItem(id);
         toast.success("Removed Item From Bag");
     }
+
+    const checkoutBtnHandler = (e) => {
+        e.preventDefault();
+        if (cartTotal === "") {
+            alert("please enter amount");
+        } else {
+            var options = {
+                key: import.meta.env.VITE_KEY_ID,
+                key_secret: import.meta.env.VITE_KEY_SECRET,
+                amount: cartTotal * 100 + 4000,
+                currency: "INR",
+                name: "FOOD MANIA",
+                description: "Testing Purpose Only",
+                handler: function (response) {
+                    alert(response.razorpay_payment_id);
+                },
+                prefill: {
+                    name: "Lokesh Vasnik",
+                    email: import.meta.env.VITE_KEY_MAIL,
+                    contact: import.meta.env.VITE_KEY_PHONE,
+                },
+                notes: {
+                    address: "Razorpay Corporate office",
+                },
+                theme: {
+                    color: "#3399cc",
+                },
+            };
+            var pay = new window.Razorpay(options);
+            pay.open();
+        }
+    };
+
     return (
         <section>
             <div className="px-0 md:px-10 py-5 flex justify-evenly mt-5">
@@ -136,7 +169,10 @@ const Bag = () => {
                             </p>
                         </div>
                         <p className="mb-3">Estimated shipping time: 2 hrs</p>
-                        <button className="uppercase w-full  py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all">
+                        <button
+                            onClick={checkoutBtnHandler}
+                            className="uppercase w-full  py-2 px-10 rounded text-sm text-white mb-2 border-2 bg-black border-black transition-all"
+                        >
                             check out
                         </button>
                     </div>

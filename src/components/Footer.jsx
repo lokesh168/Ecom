@@ -39,17 +39,17 @@ const Footer = () => {
                             <li className="flex space-x-5">
                                 <MapPin size={34} />
                                 <p>
-                                    3 Falahi, Falahi St, Pasdaran Ave, Shiraz,
-                                    Fars Provieence Iran
+                                    Pineapple Cottage, 42 Moonlit Avenue,
+                                    Whispering Pines, Naigaon, 460207{" "}
                                 </p>
                             </li>
                             <li className="flex space-x-5">
                                 <Mail size={20} />
-                                <p>Email: amoopur@gmail.com</p>
+                                <p>Email: foodmania.quick@unique.com</p>
                             </li>{" "}
                             <li className="flex space-x-5">
                                 <Phone size={20} />
-                                <p>Tel: +98 9173038406 </p>
+                                <p>Tel: +91 9103000000 </p>
                             </li>
                         </ul>
                     </div>
